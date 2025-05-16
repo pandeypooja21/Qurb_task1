@@ -1,73 +1,52 @@
-# Welcome to your Lovable project
 
-## Project info
+# 🛒 Grocery Shopping Web App
 
-**URL**: https://lovable.dev/projects/a449e59d-9630-48a1-9357-7687feb92490
+This project is a **fully functional and responsive grocery shopping web application** built as part of a developer assessment for the **Qurb Internship Task**.
 
-## How can I edit this code?
+It provides a smooth user experience for browsing grocery items, managing a cart, and checking out — complete with real-time offers and dynamic stock visibility.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 📌 Project Overview
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a449e59d-9630-48a1-9357-7687feb92490) and start prompting.
+- 🎯 **Task**: Build a Grocery Shopping Web App with Search & Checkout Pages.
+- 🧑‍💻 **Internship Provider**: Qurb
+- 🛠️ **Tech Stack**: TypeScript · React · Zustand · TailwindCSS · Axios · Vite (or Next.js)
+- ⏱️ **Timeline**: Designed and implemented within the given 1-hour timeframe.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🔗 Live Demo
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+👉 [View Live App](https://qurb-task1.vercel.app/)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🧩 Features
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- 📚 **Category filtering** (All, Fruit, Drinks, Bakery)
+- 🔍 **Live search** functionality
+- 🛒 **Dynamic cart** with add/remove & quantity management
+- 🎁 **Auto-apply Offers**:
+  - Buy 6 Coca-Cola cans → Get 1 free
+  - Buy 3 croissants → Get a free coffee
+- 💬 **Stock indicator** (Available / Only X left)
+- ↔️ **Page persistence** with cart state saved between Search and Checkout
+- 📱 **Fully responsive** layout (mobile + desktop)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
+## 🛠️ Setup Instructions
 
-# Step 3: Install the necessary dependencies.
-npm i
+Follow these steps to run the project locally:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 1. Clone the Repository
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- git clone https://github.com/pandeypooja21/Qurb_task1.git
 
-**Use GitHub Codespaces**
+### 2. install dependencies
+- npm i
+- npm run dev (start locally)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## What technologies are used for this project?
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/a449e59d-9630-48a1-9357-7687feb92490) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
