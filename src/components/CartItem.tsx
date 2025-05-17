@@ -11,7 +11,7 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
-  const { updateQuantity, removeFromCart } = useCart();
+  const { updateQuantity, removeFromCart, cartItems } = useCart();
 
   // Safety check - if item is undefined or null, don't render anything
   if (!item || !item.product) {
@@ -19,9 +19,10 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   }
 
   const handleIncrement = () => {
+    console.log("Increment clicked for", item.product.product_name);
+
     if (!item.isFree) {
       // Get all items of the same product (excluding free items)
-      const { cartItems } = useCart();
       const sameProductItems = cartItems.filter(
         cartItem =>
           (cartItem.product.product_code === item.product.product_code ||
@@ -35,8 +36,13 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
         0
       );
 
+      console.log("Current quantity:", item.quantity);
+      console.log("Total quantity in cart:", totalQuantityInCart);
+      console.log("Stock:", item.product.stock);
+
       // Check if adding one more would exceed stock
       if (totalQuantityInCart < item.product.stock) {
+        console.log("Updating quantity to", item.quantity + 1);
         updateQuantity(item.product.product_code, item.quantity + 1);
 
         // Show offer notifications for Coca-Cola
@@ -71,8 +77,14 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   };
 
   const handleDecrement = () => {
+    console.log("Decrement clicked for", item.product.product_name);
+    console.log("Current quantity:", item.quantity);
+
     if (!item.isFree && item.quantity > 1) {
+      console.log("Updating quantity to", item.quantity - 1);
       updateQuantity(item.product.product_code, item.quantity - 1);
+    } else {
+      console.log("Cannot decrement: item is free or quantity <= 1");
     }
   };
 
@@ -134,32 +146,34 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
             {!item.isFree ? (
               <>
                 <div className="flex items-center mr-4">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-8 w-8 sm:h-7 sm:w-7"
-                    onClick={handleDecrement}
+                  <button
+                    type="button"
+                    className={`flex items-center justify-center h-8 w-8 sm:h-7 sm:w-7 rounded-md border border-gray-300 ${item.quantity <= 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}`}
+                    onClick={() => handleDecrement()}
                     disabled={item.quantity <= 1}
                   >
                     <Minus className="h-3 w-3" />
-                  </Button>
+                  </button>
 
                   <span className="mx-2 min-w-[24px] text-center">{item.quantity}</span>
 
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-8 w-8 sm:h-7 sm:w-7"
-                    onClick={handleIncrement}
+                  <button
+                    type="button"
+                    className={`flex items-center justify-center h-8 w-8 sm:h-7 sm:w-7 rounded-md border border-gray-300 ${item.quantity >= item.product.stock ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}`}
+                    onClick={() => handleIncrement()}
                     disabled={item.quantity >= item.product.stock}
                   >
                     <Plus className="h-3 w-3" />
-                  </Button>
+                  </button>
                 </div>
 
-                <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-7 sm:w-7 text-red-500" onClick={handleRemove}>
+                <button
+                  type="button"
+                  className="flex items-center justify-center h-8 w-8 sm:h-7 sm:w-7 rounded-md text-red-500 hover:bg-red-50"
+                  onClick={() => handleRemove()}
+                >
                   <Trash2 className="h-4 w-4" />
-                </Button>
+                </button>
               </>
             ) : (
               <div className="text-sm mr-2 bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">×{item.quantity}</div>
